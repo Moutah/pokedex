@@ -13,6 +13,9 @@
     "format": "prettier \"**/*.{ts,html,scss}\" --check",
     "format:fix": "prettier \"**/*.{ts,html,scss}\" --write"
   },
+  "engines": {
+    "node": "^16.14.0 || ^18.10.0  || >= 20.3.0"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.1.0",
