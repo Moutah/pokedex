@@ -213,29 +213,6 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
-    },
-    {
-      "files": [
-        "*.mts"
-      ],
-      "parserOptions": {
-        "sourceType": "module",
-        "project": [
-          "./scripts/tsconfig.json"
-        ]
-      },
-      "env": {
-        "node": true
-      },
-      "extends": [
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
-      ],
-      "plugins": [
-        "eslint-plugin-import",
-        "rxjs",
-        "@typescript-eslint"
-      ]
     }
   ]
 }
