@@ -8,7 +8,7 @@ import { API_URL } from '@shared/data';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutModule } from './core/layout/layout.module';
+import { LayoutModule } from './core/components/layout';
 
 @NgModule({
   declarations: [AppComponent],
