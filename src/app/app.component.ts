@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { TrainerService } from '@shared/data/trainer.service';
+import { TrainerService } from '@shared/services';
 
 @Component({
   selector: 'app-root',
