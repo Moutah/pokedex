@@ -8,6 +8,10 @@ const routes: Routes = [
     redirectTo: 'pokedex',
   },
   {
+    path: 'login',
+    loadChildren: () => import('@modules/login/login.module').then((m) => m.LoginModule),
+  },
+  {
     path: 'pokedex',
     loadChildren: () => import('@modules/pokedex/pokedex.module').then((m) => m.PokedexModule),
   },
