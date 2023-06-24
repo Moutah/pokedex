@@ -7,7 +7,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { TrainerLogout, TrainerState } from '@core/state/trainer';
 import { Store } from '@ngxs/store';
-import { distinctUntilChanged, map } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -27,10 +26,7 @@ import { distinctUntilChanged, map } from 'rxjs';
 export class LayoutComponent {
   store = inject(Store);
 
-  isConnected$ = this.store.select(TrainerState.status).pipe(
-    map((status) => status === 'connected'),
-    distinctUntilChanged()
-  );
+  trainer$ = this.store.select(TrainerState.trainer);
 
   logout() {
     this.store.dispatch(new TrainerLogout());

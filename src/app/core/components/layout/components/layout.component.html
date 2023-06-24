@@ -1,19 +1,23 @@
 <mat-toolbar
-  *ngIf="isConnected$ | async"
+  *ngIf="trainer$ | async as trainer"
   color="primary"
 >
-  <span>Pokedex</span>
+  <div>Pokedex</div>
 
-  <span class="example-spacer"></span>
+  <div class="spacer"></div>
 
   <button
-    mat-icon-button
+    mat-button
     [matMenuTriggerFor]="trainerMenu"
   >
     <mat-icon>person</mat-icon>
+    {{ trainer.name }}
   </button>
 
-  <mat-menu #trainerMenu="matMenu">
+  <mat-menu
+    #trainerMenu="matMenu"
+    class="trainer-menu"
+  >
     <button
       mat-menu-item
       (click)="logout()"
