@@ -17,6 +17,7 @@
     <button
       mat-icon-button
       matSuffix
+      type="button"
       (click)="isDisplayToken = !isDisplayToken"
     >
       <mat-icon>{{ isDisplayToken ? 'visibility_off' : 'visibility' }}</mat-icon>
@@ -29,10 +30,17 @@
 
   <button
     mat-flat-button
+    type="submit"
     color="primary"
     [disabled]="tokenControl.invalid"
-    type="submit"
   >
     Enter
   </button>
+
+  <div
+    *ngIf="isInvalidToken"
+    class="error-message"
+  >
+    Invalid token
+  </div>
 </form>
