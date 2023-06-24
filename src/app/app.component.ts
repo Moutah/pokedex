@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { TrainerLogin, TrainerLogout } from '@core/state/trainer';
 import { Store } from '@ngxs/store';
 import { AuthService } from '@shared/services';
-
-import { TrainerLogin, TrainerLogout } from './core/state/trainer.actions';
 
 @Component({
   selector: 'app-root',

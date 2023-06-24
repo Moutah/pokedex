@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { AuthService, TrainerService } from '@shared/services';
 import { tap } from 'rxjs';
 
@@ -19,6 +19,17 @@ export class TrainerState {
   trainerService = inject(TrainerService);
   authService = inject(AuthService);
   router = inject(Router);
+  zone = inject(NgZone);
+
+  @Selector()
+  static trainer(state: TrainerStateModel) {
+    return state.trainer;
+  }
+
+  @Selector()
+  static status(state: TrainerStateModel) {
+    return state.status;
+  }
 
   @Action(TrainerLogin)
   loginTrainer(ctx: StateContext<TrainerStateModel>, { token }: TrainerLogin) {
@@ -35,6 +46,6 @@ export class TrainerState {
     ctx.patchState({ status: 'disconnected', trainer: void 0 });
 
     this.authService.logout();
-    return this.router.navigate(['login']);
+    void this.zone.run(() => this.router.navigate(['login']));
   }
 }

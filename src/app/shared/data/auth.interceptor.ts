@@ -1,10 +1,9 @@
 import { HTTP_INTERCEPTORS, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { TrainerLogout } from '@core/state/trainer';
 import { Store } from '@ngxs/store';
 import { AuthService } from '@shared/services';
 import { catchError, of } from 'rxjs';
-
-import { TrainerLogout } from '../../core/state/trainer.actions';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
