@@ -1,4 +1,28 @@
-<!--    menu-->
+<mat-toolbar
+  *ngIf="isConnected$ | async"
+  color="primary"
+>
+  <span>Pokedex</span>
+
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="trainerMenu"
+  >
+    <mat-icon>person</mat-icon>
+  </button>
+
+  <mat-menu #trainerMenu="matMenu">
+    <button
+      mat-menu-item
+      (click)="logout()"
+    >
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
 
 <main class="content-wrapper">
   <router-outlet></router-outlet>
