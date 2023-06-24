@@ -2,17 +2,26 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-  private token?: string;
+  private localStorageTokenKey = 'trainer-token';
 
+  /**
+   * Stores the trainer token in persistent storage
+   */
   login(token: string) {
-    this.token = token;
+    localStorage.setItem(this.localStorageTokenKey, token);
   }
 
+  /**
+   * Remove the trainer token from persistent storage
+   */
   logout() {
-    this.token = undefined;
+    localStorage.removeItem(this.localStorageTokenKey);
   }
 
+  /**
+   * Retrieves the trainer token from persistent storage
+   */
   getToken() {
-    return this.token;
+    return localStorage.getItem(this.localStorageTokenKey);
   }
 }

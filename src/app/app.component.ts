@@ -1,5 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { TrainerService } from '@shared/services';
+import { Store } from '@ngxs/store';
+import { AuthService } from '@shared/services';
+
+import { TrainerLogin, TrainerLogout } from './core/state/trainer.actions';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +10,21 @@ import { TrainerService } from '@shared/services';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'pokedex';
-
-  trainerService = inject(TrainerService);
+  store = inject(Store);
+  authService = inject(AuthService);
 
   ngOnInit() {
-    this.trainerService.getMe().subscribe((data) => {
-      console.log('%capp.component.ts line:29%c data', 'color: #007acc;', 'color: #67c2ff;', data);
-    });
+    this.restoreLogin();
+  }
+
+  private restoreLogin() {
+    const token = this.authService.getToken();
+
+    if (!token) {
+      this.store.dispatch(new TrainerLogout());
+      return;
+    }
+
+    this.store.dispatch(new TrainerLogin(token));
   }
 }
