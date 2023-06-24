@@ -17,18 +17,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it("should have as title 'pokedex'", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('pokedex');
-  });
+  it.todo('should dispatch login if token available');
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'pokedex app is running!'
-    );
-  });
+  it.todo('should dispatch logout if token not available');
 });
