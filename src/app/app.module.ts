@@ -2,12 +2,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@core/components/layout';
+import { LayoutComponent } from '@core/components/layout/layout.component';
+import { AuthInterceptorProvider } from '@core/http/auth.interceptor';
+import { AuthService } from '@core/services/auth.service';
+import { TrainerService } from '@core/services/trainer.service';
 import { TrainerState } from '@core/state/trainer';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { ApiUrlProvider, AuthInterceptorProvider } from '@shared/data';
-import { AuthService, TrainerService } from '@shared/services';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,9 +26,9 @@ import { AppComponent } from './app.component';
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
 
-    LayoutModule,
+    LayoutComponent,
   ],
-  providers: [ApiUrlProvider, AuthInterceptorProvider, AuthService, TrainerService],
+  providers: [AuthInterceptorProvider, AuthService, TrainerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

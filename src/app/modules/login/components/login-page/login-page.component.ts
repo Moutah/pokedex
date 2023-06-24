@@ -6,8 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { TrainerLogin } from '@core/state/trainer';
-import { TrainerState } from '@core/state/trainer';
+import { TrainerLogin, TrainerState } from '@core/state/trainer';
 import { Store } from '@ngxs/store';
 
 @Component({
@@ -39,7 +38,7 @@ export class LoginPageComponent implements OnDestroy {
     .select(TrainerState.status)
     .subscribe((status) => {
       if (status === 'connected') {
-        void this.router.navigate(['pokedex', 'list']);
+        void this.router.navigate(['species', 'list']);
         return;
       }
 

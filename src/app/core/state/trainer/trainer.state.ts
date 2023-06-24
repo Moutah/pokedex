@@ -1,7 +1,8 @@
 import { inject, Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@core/services/auth.service';
+import { TrainerService } from '@core/services/trainer.service';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { AuthService, TrainerService } from '@shared/services';
 import { tap } from 'rxjs';
 
 import { TrainerLogin, TrainerLogout } from './trainer.actions';
