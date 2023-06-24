@@ -1,1 +1,38 @@
-login
+<form
+  class="example-form"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field
+    class="example-full-width"
+    appearance="outline"
+  >
+    <mat-label>Your trainer token</mat-label>
+
+    <input
+      matInput
+      [type]="isDisplayToken ? 'text' : 'password'"
+      [formControl]="tokenControl"
+    />
+
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="isDisplayToken = !isDisplayToken"
+    >
+      <mat-icon>{{ isDisplayToken ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+
+    <mat-error *ngIf="tokenControl.hasError('required')">
+      Token is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="tokenControl.invalid"
+    type="submit"
+  >
+    Enter
+  </button>
+</form>
