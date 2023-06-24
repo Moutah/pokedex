@@ -1,12 +1,14 @@
-import { NgIf } from '@angular/common';
+import { NgIf, NgOptimizedImage } from '@angular/common';
 import { Component, inject, OnDestroy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { TrainerLogin, TrainerState } from '@core/state/trainer';
+import { environment } from '@environment';
 import { Store } from '@ngxs/store';
 
 @Component({
@@ -19,6 +21,8 @@ import { Store } from '@ngxs/store';
     NgIf,
     MatButtonModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    NgOptimizedImage,
   ],
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -31,19 +35,21 @@ export class LoginPageComponent implements OnDestroy {
   tokenControl = new FormControl('', Validators.required);
   isDisplayToken = false;
   isInvalidToken = false;
+  isConnecting = false;
+
+  registerUrl = environment.registerUrl;
 
   private hasSubmitted = false;
 
   private readonly trainerStatusSubscription = this.store
     .select(TrainerState.status)
     .subscribe((status) => {
+      this.isConnecting = status === 'connecting';
+      this.isInvalidToken = status === 'disconnected' && this.hasSubmitted;
+
       if (status === 'connected') {
         void this.router.navigate(['species', 'list']);
         return;
-      }
-
-      if (status === 'disconnected' && this.hasSubmitted) {
-        this.isInvalidToken = true;
       }
     });
 

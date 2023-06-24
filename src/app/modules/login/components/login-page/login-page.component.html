@@ -1,12 +1,23 @@
+<div class="page-title">
+  <img
+    ngSrc="/assets/poke-ball.svg"
+    width="320"
+    height="320"
+    alt="image"
+  />
+
+  <h1>POKEDEX</h1>
+</div>
+
 <form
-  class="example-form"
+  class="login-form"
   (ngSubmit)="onSubmit()"
 >
   <mat-form-field
     class="example-full-width"
     appearance="outline"
   >
-    <mat-label>Your trainer token</mat-label>
+    <mat-label>Login with your trainer token</mat-label>
 
     <input
       matInput
@@ -24,11 +35,12 @@
     </button>
 
     <mat-error *ngIf="tokenControl.hasError('required')">
-      Token is <strong>required</strong>
+      Your token is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <button
+    *ngIf="!isConnecting"
     mat-flat-button
     type="submit"
     color="primary"
@@ -36,11 +48,20 @@
   >
     Enter
   </button>
+  <mat-spinner
+    *ngIf="isConnecting"
+    [diameter]="40"
+  ></mat-spinner>
 
   <div
     *ngIf="isInvalidToken"
     class="error-message"
   >
-    Invalid token
+    This token is not valid
   </div>
 </form>
+
+<div class="helper-message">
+  Don't have a trainer token yet? Head over to <a [href]="registerUrl">{{ registerUrl }}</a> to
+  register.
+</div>
