@@ -27,10 +27,12 @@ describe('LayoutComponent', () => {
     store.reset({
       ...store.snapshot(),
       trainer: {
-        id: 1,
-        name: 'toto',
-        created_at: new Date(),
-        updated_at: new Date(),
+        trainer: {
+          id: 1,
+          name: 'toto',
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
       },
     });
     storeDispatchSpy = jest.spyOn(store, 'dispatch').mockReturnValue(of());
