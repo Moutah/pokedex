@@ -55,7 +55,9 @@ describe('AuthIntercepter', () => {
     };
 
     const requestMock = new HttpRequest('GET', '/test');
-    authInterceptor.intercept(requestMock, next);
+    authInterceptor.intercept(requestMock, next).subscribe(() => {
+      // noop
+    });
 
     const action = new TrainerLogout();
     expect(storeDispatchSpy).toHaveBeenCalledWith(action);
@@ -75,7 +77,9 @@ describe('AuthIntercepter', () => {
     };
 
     const requestMock = new HttpRequest('GET', '/test');
-    authInterceptor.intercept(requestMock, next).subscribe(() => {});
+    authInterceptor.intercept(requestMock, next).subscribe(() => {
+      // noop
+    });
 
     const action = new TrainerLogout();
     expect(storeDispatchSpy).toHaveBeenCalledWith(action);
