@@ -21,12 +21,17 @@ export class SpeciesState {
     return state.species;
   }
 
+  @Selector()
+  static status(state: SpeciesStateModel) {
+    return state.status;
+  }
+
   @Action(GetSpeciesList)
   getSpeciesList(ctx: StateContext<SpeciesStateModel>) {
     ctx.patchState({ status: 'loading' });
 
     return this.speciesService.getList().pipe(
-      tap((species) => ctx.patchState({ species })),
+      tap((species) => ctx.patchState({ status: 'idle', species })),
       catchError(() => {
         ctx.patchState({ status: 'failed' });
         return of();
