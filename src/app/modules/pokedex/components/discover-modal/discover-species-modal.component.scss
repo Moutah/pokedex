@@ -1,0 +1,14 @@
+:host {
+  display: block;
+
+  .file-preview {
+    & > * {
+      display: block;
+    }
+  }
+
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
