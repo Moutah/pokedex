@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DiscoverSpecies } from '@modules/pokedex/state/species/species.actions';
 import { Store } from '@ngxs/store';
-import { tap } from 'rxjs';
+import { take, tap } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -55,11 +55,12 @@ export class DiscoverSpeciesModalComponent {
     }
 
     this.isLoading = true;
-    this.store.dispatch(new DiscoverSpecies(this.file)).pipe(
-      tap(() => {
+    this.store
+      .dispatch(new DiscoverSpecies(this.file))
+      .pipe(take(1))
+      .subscribe(() => {
         this.isLoading = false;
         this.dialogRef.close();
-      })
-    );
+      });
   }
 }

@@ -34,11 +34,6 @@ export class SpeciesListPageComponent implements OnInit {
   }
 
   openDiscoverModal() {
-    const dialogRef = this.dialog.open(DiscoverSpeciesModalComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed', result);
-      // this.animal = result;
-    });
+    this.dialog.open(DiscoverSpeciesModalComponent);
   }
 }
