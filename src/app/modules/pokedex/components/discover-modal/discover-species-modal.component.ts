@@ -1,10 +1,13 @@
 import { A11yModule } from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DiscoverSpecies } from '@modules/pokedex/state/species/species.actions';
+import { Store } from '@ngxs/store';
+import { tap } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -21,15 +24,20 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrls: ['discover-species-modal.component.scss'],
 })
 export class DiscoverSpeciesModalComponent {
+  store = inject(Store);
+  dialogRef = inject(MatDialogRef<DiscoverSpeciesModalComponent>);
+
   @ViewChild('fileInput')
   fileInput!: ElementRef<HTMLInputElement>;
 
+  file?: File;
   srcResult = '';
+  isLoading = false;
 
   onFileSelected(event: Event) {
-    const file = (event.target as HTMLInputElement)?.files?.[0];
+    this.file = (event.target as HTMLInputElement)?.files?.[0];
 
-    if (!file) {
+    if (!this.file) {
       return;
     }
 
@@ -38,15 +46,20 @@ export class DiscoverSpeciesModalComponent {
     reader.onload = () => {
       this.srcResult = reader.result as string;
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(this.file);
   }
 
   sendPhoto() {
-    console.log(
-      '%cdiscover-species-modal.component.ts %csendPhoto()',
-      'color: #007acc;',
-      'color: #ff8500;',
-      {}
+    if (!this.file) {
+      return;
+    }
+
+    this.isLoading = true;
+    this.store.dispatch(new DiscoverSpecies(this.file)).pipe(
+      tap(() => {
+        this.isLoading = false;
+        this.dialogRef.close();
+      })
     );
   }
 }

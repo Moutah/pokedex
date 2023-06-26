@@ -10,4 +10,15 @@ export class SpeciesService {
   getList() {
     return this.http.get<Species[]>(`${environment.apiUrl}/species`);
   }
+
+  identify(file: File) {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    return this.http.post<Species>(`${environment.apiUrl}/species/identify`, formData);
+  }
+
+  reset() {
+    return this.http.delete(`${environment.apiUrl}/species/reset`);
+  }
 }

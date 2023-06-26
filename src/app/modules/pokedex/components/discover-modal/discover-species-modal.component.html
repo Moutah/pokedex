@@ -45,17 +45,23 @@
   mat-dialog-actions
   class="dialog-actions"
 >
-  <button
-    mat-flat-button
-    mat-dialog-close
-  >
-    Cancel
-  </button>
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="sendPhoto()"
-  >
-    Send
-  </button>
+  <ng-container *ngIf="!isLoading; else ActionsLoading">
+    <button
+      mat-flat-button
+      mat-dialog-close
+    >
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="sendPhoto()"
+    >
+      Send
+    </button>
+  </ng-container>
+
+  <ng-template #ActionsLoading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 </div>
