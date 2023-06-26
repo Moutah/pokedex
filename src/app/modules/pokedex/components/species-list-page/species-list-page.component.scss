@@ -12,10 +12,8 @@
 
     &__item {
       width: 100%;
-      position: relative;
       border-radius: 8px;
       border: 1px solid #999;
-      aspect-ratio: 1 /1;
       overflow: hidden;
 
       @media (min-width: 480px) {
@@ -39,14 +37,26 @@
   }
 
   .species-image {
-    position: absolute;
     inset: 0;
     object-fit: cover;
     width: 100%;
+    display: block;
   }
 
   .species-info {
     margin-top: auto;
+    background-color: mat.get-color-from-palette(theme.$my-primary);
+    color: mat.get-color-from-palette(theme.$my-primary, default-contrast);
+    padding: 0.6rem;
+    line-height: 1.4;
+
+    &__id {
+      opacity: 0.8;
+    }
+
+    &__name {
+      font-size: 20px;
+    }
   }
 
   .discover {

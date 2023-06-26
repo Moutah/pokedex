@@ -15,8 +15,12 @@
           class="species-image"
         />
         <div class="species-info">
-          <div class="species-info__id">#{{ species.id }}</div>
-          <div class="species-info__name">{{ species.name }}</div>
+          <div class="species-info__id">
+            <em>#{{ species.id }}</em>
+          </div>
+          <div class="species-info__name">
+            {{ species.name[0].toUpperCase() + species.name.slice(1) }}
+          </div>
         </div>
       </div>
     </div>
