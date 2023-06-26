@@ -13,4 +13,8 @@ export class TrainerService {
       .get<TrainerJSON>(`${environment.apiUrl}/me`)
       .pipe(map((trainerJson) => hydrateTrainer(trainerJson)));
   }
+
+  reset() {
+    return this.http.post(`${environment.apiUrl}/reset`, {});
+  }
 }

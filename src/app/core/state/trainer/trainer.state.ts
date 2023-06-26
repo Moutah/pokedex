@@ -5,7 +5,7 @@ import { TrainerService } from '@core/services/trainer.service';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs';
 
-import { TrainerLogin, TrainerLogout } from './trainer.actions';
+import { TrainerLogin, TrainerLogout, TrainerReset } from './trainer.actions';
 import { TrainerStateModel } from './trainer.model';
 
 @State<TrainerStateModel>({
@@ -48,5 +48,14 @@ export class TrainerState {
 
     this.authService.logout();
     void this.zone.run(() => this.router.navigate(['login']));
+  }
+
+  @Action(TrainerReset)
+  trainerReset() {
+    return this.trainerService.reset().pipe(
+      tap(() => {
+        window.location.reload();
+      })
+    );
   }
 }
