@@ -1,0 +1,33 @@
+<mat-toolbar
+  *ngIf="trainer$ | async as trainer"
+  color="primary"
+>
+  <div>Pokedex</div>
+
+  <div class="spacer"></div>
+
+  <button
+    mat-button
+    [matMenuTriggerFor]="trainerMenu"
+  >
+    <mat-icon>person</mat-icon>
+    {{ trainer.name }}
+  </button>
+
+  <mat-menu
+    #trainerMenu="matMenu"
+    class="trainer-menu"
+  >
+    <button
+      mat-menu-item
+      (click)="logout()"
+    >
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<main class="content-wrapper">
+  <router-outlet></router-outlet>
+</main>
