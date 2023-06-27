@@ -41,6 +41,7 @@ export class SpeciesPageComponent {
   species$ = this.store
     .select(SpeciesState.species)
     .pipe(map((filterFn) => filterFn(this.speciesId)));
+
   speciesStatus$ = this.store.select(SpeciesState.status);
 
   openDiscoverModal() {

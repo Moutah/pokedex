@@ -10,13 +10,38 @@
           [alt]="species.name"
           class="species-image"
         />
-        <div class="species-info">
-          <div class="species-info__id">
+
+        <div class="species-title">
+          <span class="species-title__id">
             <em>#{{ species.id }}</em>
-          </div>
-          <div class="species-info__name">
+          </span>
+          <span class="species-title__name">
             {{ species.name[0].toUpperCase() + species.name.slice(1) }}
+          </span>
+        </div>
+
+        <div class="species-description">
+          {{ species.description }}
+        </div>
+
+        <div class="species-types">
+          <label class="species-types__label">Types:</label>
+          <div
+            *ngFor="let type of species.types"
+            class="species-types__item"
+          >
+            {{ type }}
           </div>
+        </div>
+
+        <div class="species-weight">
+          <label class="species-weight__label">Weight:</label>
+          <span class="species-weight__value">{{ species.weight }} Kg</span>
+        </div>
+
+        <div class="species-height">
+          <label class="species-height__label">Height:</label>
+          <span class="species-height__value">{{ species.height }} Meters</span>
         </div>
       </ng-container>
     </div>

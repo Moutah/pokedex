@@ -25,12 +25,12 @@ const routes: Routes = [
         redirectTo: 'list',
       },
       {
-        path: ':speciesId',
-        component: SpeciesPageComponent,
-      },
-      {
         path: 'list',
         component: SpeciesListPageComponent,
+      },
+      {
+        path: ':speciesId',
+        component: SpeciesPageComponent,
       },
     ],
   },
