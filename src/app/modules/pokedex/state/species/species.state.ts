@@ -37,10 +37,10 @@ export class SpeciesState {
   }
 
   @Action(GetSpeciesList)
-  getSpeciesList(ctx: StateContext<SpeciesStateModel>) {
+  getSpeciesList(ctx: StateContext<SpeciesStateModel>, { search }: GetSpeciesList) {
     ctx.patchState({ status: 'loading' });
 
-    return this.speciesService.getList().pipe(
+    return this.speciesService.getList(search).pipe(
       tap((species) => ctx.patchState({ status: 'idle', speciesList: species })),
       catchError(() => {
         ctx.patchState({ status: 'failed' });

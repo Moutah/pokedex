@@ -1,5 +1,7 @@
 export class GetSpeciesList {
   static readonly type = '[Species] Get list';
+
+  constructor(public search?: string) {}
 }
 
 export class DiscoverSpecies {

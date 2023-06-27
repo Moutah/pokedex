@@ -7,8 +7,14 @@ import { Species, SpeciesAbstract } from '@modules/pokedex/state/species/species
 export class SpeciesService {
   private readonly http = inject(HttpClient);
 
-  getList() {
-    return this.http.get<SpeciesAbstract[]>(`${environment.apiUrl}/species`);
+  getList(search?: string) {
+    const url = new URL(`${environment.apiUrl}/species`, window.origin);
+
+    if (search) {
+      url.searchParams.set('search', search);
+    }
+
+    return this.http.get<SpeciesAbstract[]>(url.toString());
   }
 
   get(id: number) {
