@@ -1,0 +1,38 @@
+<ng-container *ngIf="speciesStatus$ | async as speciesStatus">
+  <ng-container [ngSwitch]="speciesStatus">
+    <div
+      *ngSwitchCase="'idle'"
+      class="species"
+    >
+      <ng-container *ngIf="species$ | async as species">
+        <img
+          [src]="species.image"
+          [alt]="species.name"
+          class="species-image"
+        />
+        <div class="species-info">
+          <div class="species-info__id">
+            <em>#{{ species.id }}</em>
+          </div>
+          <div class="species-info__name">
+            {{ species.name[0].toUpperCase() + species.name.slice(1) }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div
+      *ngSwitchCase="'loading'"
+      class="species-list--loading"
+    >
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div
+      *ngSwitchCase="'error'"
+      class="species-list--error"
+    >
+      Error
+    </div>
+  </ng-container>
+</ng-container>
