@@ -1,3 +1,23 @@
+<div class="species-search">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      [(ngModel)]="search"
+      (keyup)="searchChanged$.next(undefined)"
+    />
+
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      (click)="clearSearch()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
 <ng-container *ngIf="speciesStatus$ | async as speciesStatus">
   <ng-container [ngSwitch]="speciesStatus">
     <div

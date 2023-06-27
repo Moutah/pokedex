@@ -4,6 +4,16 @@
 :host {
   display: block;
 
+  .species-search {
+    text-align: center;
+
+    & > mat-form-field {
+      width: 100%;
+      max-width: 480px;
+      margin-inline: auto;
+    }
+  }
+
   .species-list {
     display: flex;
     justify-content: center;
