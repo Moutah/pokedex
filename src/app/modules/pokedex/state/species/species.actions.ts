@@ -7,3 +7,9 @@ export class DiscoverSpecies {
 
   constructor(public file: File) {}
 }
+
+export class GetSpecies {
+  static readonly type = '[Species] Get single';
+
+  constructor(public id: number) {}
+}

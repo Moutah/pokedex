@@ -1,6 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { SpeciesService } from '@modules/pokedex/services/species.service';
-import { DiscoverSpecies, GetSpeciesList } from '@modules/pokedex/state/species/species.actions';
+import {
+  DiscoverSpecies,
+  GetSpecies,
+  GetSpeciesList,
+} from '@modules/pokedex/state/species/species.actions';
 import { SpeciesStateModel } from '@modules/pokedex/state/species/species.model';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { catchError, of, tap } from 'rxjs';
@@ -9,7 +13,8 @@ import { catchError, of, tap } from 'rxjs';
   name: 'species',
   defaults: {
     status: 'idle',
-    species: [],
+    speciesList: [],
+    species: {},
   },
 })
 @Injectable()
@@ -17,8 +22,13 @@ export class SpeciesState {
   speciesService = inject(SpeciesService);
 
   @Selector()
+  static speciesList(state: SpeciesStateModel) {
+    return state.speciesList;
+  }
+
+  @Selector()
   static species(state: SpeciesStateModel) {
-    return state.species;
+    return (id: number) => state.species[id] || {};
   }
 
   @Selector()
@@ -31,7 +41,7 @@ export class SpeciesState {
     ctx.patchState({ status: 'loading' });
 
     return this.speciesService.getList().pipe(
-      tap((species) => ctx.patchState({ status: 'idle', species })),
+      tap((species) => ctx.patchState({ status: 'idle', speciesList: species })),
       catchError(() => {
         ctx.patchState({ status: 'failed' });
         return of();
@@ -46,12 +56,35 @@ export class SpeciesState {
         const state = ctx.getState();
 
         ctx.patchState({
-          species: state.species.map((species) =>
+          speciesList: state.speciesList.map((species) =>
             species.id === newSpecies.id ? newSpecies : species
           ),
         });
       }),
       catchError(() => {
+        return of();
+      })
+    );
+  }
+
+  @Action(GetSpecies)
+  getSpecies(ctx: StateContext<SpeciesStateModel>, { id }: GetSpecies) {
+    ctx.patchState({ status: 'loading' });
+
+    return this.speciesService.get(id).pipe(
+      tap((species) => {
+        const state = ctx.getState();
+
+        ctx.patchState({
+          status: 'idle',
+          species: {
+            ...state.species,
+            [id]: species,
+          },
+        });
+      }),
+      catchError(() => {
+        ctx.patchState({ status: 'failed' });
         return of();
       })
     );

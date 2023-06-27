@@ -26,7 +26,7 @@ export class SpeciesListPageComponent implements OnInit {
   store = inject(Store);
   dialog = inject(MatDialog);
 
-  speciesList$ = this.store.select(SpeciesState.species);
+  speciesList$ = this.store.select(SpeciesState.speciesList);
   speciesStatus$ = this.store.select(SpeciesState.status);
 
   ngOnInit() {
