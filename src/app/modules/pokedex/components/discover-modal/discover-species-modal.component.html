@@ -55,6 +55,7 @@
     <button
       mat-flat-button
       color="primary"
+      [disabled]="!this.file"
       (click)="sendPhoto()"
     >
       Send

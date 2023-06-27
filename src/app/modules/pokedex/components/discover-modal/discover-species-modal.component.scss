@@ -5,6 +5,13 @@
     & > * {
       display: block;
     }
+
+    img {
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 420px;
+      max-height: 420px;
+    }
   }
 
   .dialog-actions {
