@@ -29,10 +29,6 @@
       &:hover {
         border-color: mat.get-color-from-palette(theme.$my-primary);
       }
-
-      &--discovered {
-        cursor: pointer;
-      }
     }
   }
 

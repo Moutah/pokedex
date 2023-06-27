@@ -4,10 +4,10 @@
       *ngSwitchCase="'idle'"
       class="species-list"
     >
-      <div
+      <a
         *ngFor="let species of speciesList$ | async"
         class="species-list__item"
-        [class.species-list__item--discovered]="species.name !== '???'"
+        [routerLink]="['/species', species.id]"
       >
         <img
           [src]="species.image"
@@ -22,7 +22,7 @@
             {{ species.name[0].toUpperCase() + species.name.slice(1) }}
           </div>
         </div>
-      </div>
+      </a>
     </div>
 
     <div

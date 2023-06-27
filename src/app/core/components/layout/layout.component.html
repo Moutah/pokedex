@@ -2,7 +2,11 @@
   *ngIf="trainer$ | async as trainer"
   color="primary"
 >
-  <div>Pokedex</div>
+  <a
+    class="home-link"
+    [routerLink]="['/']"
+    >Pokedex</a
+  >
 
   <div class="spacer"></div>
 

@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterLink } from '@angular/router';
 import { DiscoverSpeciesModalComponent } from '@modules/pokedex/components/discover-modal/discover-species-modal.component';
 import { GetSpeciesList } from '@modules/pokedex/state/species/species.actions';
 import { SpeciesState } from '@modules/pokedex/state/species/species.state';
@@ -17,6 +18,7 @@ import { Store } from '@ngxs/store';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    RouterLink,
   ],
   selector: 'app-species-list-page',
   templateUrl: 'species-list-page.component.html',
