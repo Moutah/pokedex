@@ -28,8 +28,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(authReq).pipe(
       map((event) => {
-        if (event instanceof HttpResponse) {
-          event = event.clone({ body: event.body.data });
+        if (event instanceof HttpResponse && event.body?.data) {
+          return event.clone({ body: event.body.data });
         }
 
         return event;
