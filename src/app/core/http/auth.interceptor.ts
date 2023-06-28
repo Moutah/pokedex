@@ -1,9 +1,15 @@
-import { HTTP_INTERCEPTORS, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { TrainerLogout } from '@core/state/trainer';
 import { Store } from '@ngxs/store';
-import { catchError, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -21,6 +27,13 @@ export class AuthInterceptor implements HttpInterceptor {
     const authReq = req.clone({ setHeaders: { Authorization: `Bearer ${authToken}` } });
 
     return next.handle(authReq).pipe(
+      map((event) => {
+        if (event instanceof HttpResponse) {
+          event = event.clone({ body: event.body.data });
+        }
+
+        return event;
+      }),
       catchError((error) => {
         if (error.status === 401) {
           this.store.dispatch(new TrainerLogout());

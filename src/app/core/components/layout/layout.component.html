@@ -2,7 +2,11 @@
   *ngIf="trainer$ | async as trainer"
   color="primary"
 >
-  <div>Pokedex</div>
+  <a
+    class="home-link"
+    [routerLink]="['/']"
+    >Pokedex</a
+  >
 
   <div class="spacer"></div>
 
@@ -24,6 +28,13 @@
     >
       <mat-icon>logout</mat-icon>
       <span>Logout</span>
+    </button>
+    <button
+      mat-menu-item
+      (click)="reset()"
+    >
+      <mat-icon>recycling</mat-icon>
+      <span>Reset pokedex</span>
     </button>
   </mat-menu>
 </mat-toolbar>

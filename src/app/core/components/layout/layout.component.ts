@@ -1,11 +1,14 @@
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { TrainerLogout, TrainerState } from '@core/state/trainer';
+import { TrainerResetModalComponent } from '@core/components/trainer-reset-modal/trainer-reset-modal.component';
+import { TrainerLogout, TrainerReset, TrainerState } from '@core/state/trainer';
+import { DiscoverSpeciesModalComponent } from '@modules/pokedex/components/discover-modal/discover-species-modal.component';
 import { Store } from '@ngxs/store';
 
 @Component({
@@ -18,6 +21,7 @@ import { Store } from '@ngxs/store';
     MatMenuModule,
     AsyncPipe,
     NgIf,
+    MatDialogModule,
   ],
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -25,10 +29,15 @@ import { Store } from '@ngxs/store';
 })
 export class LayoutComponent {
   store = inject(Store);
+  dialog = inject(MatDialog);
 
   trainer$ = this.store.select(TrainerState.trainer);
 
   logout() {
     this.store.dispatch(new TrainerLogout());
+  }
+
+  reset() {
+    this.dialog.open(TrainerResetModalComponent);
   }
 }

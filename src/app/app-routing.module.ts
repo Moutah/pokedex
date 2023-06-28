@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { provideRouter, RouterModule, Routes, withComponentInputBinding } from '@angular/router';
 import { LoginPageComponent } from '@modules/login/components/login-page/login-page.component';
 import { LoginModule } from '@modules/login/login.module';
 import { SpeciesListPageComponent } from '@modules/pokedex/components/species-list-page/species-list-page.component';
+import { SpeciesPageComponent } from '@modules/pokedex/components/species-page/species-page.component';
 import { PokedexModule } from '@modules/pokedex/pokedex.module';
 
 const routes: Routes = [
@@ -27,11 +28,16 @@ const routes: Routes = [
         path: 'list',
         component: SpeciesListPageComponent,
       },
+      {
+        path: ':speciesId',
+        component: SpeciesPageComponent,
+      },
     ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), LoginModule, PokedexModule],
+  providers: [provideRouter(routes, withComponentInputBinding())],
 })
 export class AppRoutingModule {}

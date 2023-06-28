@@ -7,3 +7,7 @@ export class TrainerLogin {
 export class TrainerLogout {
   static readonly type = '[Trainer] Logout';
 }
+
+export class TrainerReset {
+  static readonly type = '[Trainer] Reset';
+}
