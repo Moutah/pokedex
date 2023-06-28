@@ -48,7 +48,7 @@ export class LoginPageComponent implements OnDestroy {
       this.isInvalidToken = status === 'disconnected' && this.hasSubmitted;
 
       if (status === 'connected') {
-        void this.router.navigate(['species', 'list']);
+        void this.router.navigate(['/']);
         return;
       }
     });
