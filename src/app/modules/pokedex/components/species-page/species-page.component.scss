@@ -1,0 +1,56 @@
+@use 'src/styles/theme';
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+
+  .species {
+  }
+
+  .species-image {
+    width: 100%;
+    max-height: 30vh;
+    object-fit: contain;
+  }
+
+  .species-title {
+    margin-top: auto;
+    background-color: mat.get-color-from-palette(theme.$my-primary);
+    color: mat.get-color-from-palette(theme.$my-primary, default-contrast);
+    padding: 0.6rem;
+    line-height: 1.4;
+
+    &__id {
+      opacity: 0.8;
+    }
+
+    &__name {
+      font-size: 20px;
+    }
+  }
+
+  .species-description {
+    font-size: 16px;
+    padding-block: 1rem;
+  }
+
+  .species-weight,
+  .species-height,
+  .species-genre,
+  .species-types {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    height: 1.6rem;
+
+    label {
+      font-weight: 500;
+    }
+
+    &__item {
+      padding: 0.1rem 0.2rem;
+      border-radius: 4px;
+      border: 1px solid #999;
+    }
+  }
+}

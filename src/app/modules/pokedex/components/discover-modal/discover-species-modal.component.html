@@ -1,0 +1,68 @@
+<h1 mat-dialog-title>Discover a species</h1>
+<div mat-dialog-content>
+  <p>Upload a photo to the AI to discover a new Pokemon speices.</p>
+
+  <div
+    *ngIf="!srcResult"
+    class="file-uploader"
+  >
+    <button
+      type="button"
+      mat-flat-button
+      (click)="fileInput.click()"
+      cdkFocusInitial
+    >
+      Choose File
+    </button>
+    <input
+      hidden
+      (change)="onFileSelected($event)"
+      #fileInput
+      type="file"
+      id="file"
+      accept="image/*"
+    />
+  </div>
+  <div
+    *ngIf="srcResult"
+    class="file-preview"
+  >
+    <img
+      [src]="srcResult"
+      alt="New image"
+    />
+    <button
+      type="button"
+      mat-flat-button
+      (click)="srcResult = ''"
+    >
+      Clear
+    </button>
+  </div>
+</div>
+
+<div
+  mat-dialog-actions
+  class="dialog-actions"
+>
+  <ng-container *ngIf="!isLoading; else ActionsLoading">
+    <button
+      mat-flat-button
+      mat-dialog-close
+    >
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="!this.file"
+      (click)="sendPhoto()"
+    >
+      Send
+    </button>
+  </ng-container>
+
+  <ng-template #ActionsLoading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>
