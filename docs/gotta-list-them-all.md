@@ -5,35 +5,30 @@ listing all species.
 
 ## 1. Create a dedicated page
 
-Keep it minimal for now, we just want something to prove it is plugged correctly and start fetching data.
-
-## 2. Make the route
-
-Edit the routing module to make the home url ending up displaying our new page.
+Create a new page and edit the routing module so that we see it when navigating to the root url. Keep the page minimal
+for now, we just want something to prove it is plugged correctly and start fetching data.
 
 > 💡 You can either plug the component directly or use a redirection.
 
-## 3. Create a dedicated service
+## 2. Add a service to the mix
 
 Now that we can navigate to the page, we need to start fetching some data. Create a service dedicated to species and
 give it a method for loading all species.
 
 > 💡 The API call for this is `GET /species`.
 
-## 4. Plug the page to the service
-
-Back in the page, consume the service to fetch the species list.
+With the service ready, plug it to the page so that it loads the species list upon reaching the page.
 
 > 🟢 To ensure everything is well plugged together, display the data in the template with the `json` pipe and run the
 > following test :
 > ```shell
-> npm run test -- service-is-plugged-to-list-page
+> npm run test -- list-page-is-plugged
 > ```
 
-## 5. Stylize the page
+## 3. Stylize the page
 
-You can now work the data to render it nicely. Choose a layout you like and make sur every field of each species is on
-the screen : `name` and `id` as text and `image` as a displayed image. 
+You can now work the data to render it nicely. Choose a layout you like and make sure to display the `name` and `id` of
+each species and an image with the url of the `image` property.
 
 > 🟢 Validate this feature with :
 > ```shell

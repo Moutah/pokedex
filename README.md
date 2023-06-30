@@ -54,8 +54,10 @@ and follow along.
 
 Here are the feature we'd like you to develop. We recommend sticking to the order below for an smoother experience.
 
-For now, focus on the functional aspects. Styling should be minimal but decent on all kind of screen (mobile, tablet,
-desktop).
+Focus your efforts on the functional aspects. Styling should be decent on all kind of screen (mobile, tablet, desktop)
+but we don't expect the app to be too fancy.
+
+# TODO : variante senior = use state, no consuming service directly
 
 > 💡 Do not hesitate to run the provided test commands while implementing these objectives, as it will help you to make
 > sure that everything is working as intended. If a test is failing, but you are convinced that your implementation is

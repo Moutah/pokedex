@@ -8,35 +8,18 @@ To do so, we'll need a dialog with an input to upload and then send our image.
 
 ## 1. The dialog
 
-First, create the dialog component. Keep it minimal for now as we just need to ensure we can open it.
+In the location of your choosing, add a button which will toggle the opening of the dialog. Create the dialog component
+with suitable controls (cancel and confirm buttons as well as a close icon). Keep its content minimal for now, we just
+want to ensure we can open and close it.
 
-## 2. The button
-
-In the location of your choosing, add a primary button with a `click` binding that will open our previously created
-dialog component.
-
-## 3. The controls
-
-Now that we can open the dialog, fill its template with suitable controls for a dialog (cancel and confirm buttons and
-close icon). Again keep it simple for now as we just want to assess it is working.
-
-> 🟢 Validate the modal controls with :
+> 🟢 Validate the modal interaction with :
 > ```shell
-> npm run test -- modal-is-working
+> npm run test -- modal-is-plugged
 > ```
 
-## 4. The input
+## 2. Sending the image
 
-Time to setup the input so that we can upload our image! Fill the dialog content to have a nice form to submit an image.
-
-> 🟢 Validate the input with :
-> ```shell
-> npm run test -- modal-has input
-> ```
-
-## 5. The submit
-
-Finally, plug the "confirm" control button to a method that will send the image to the API for identification.
+Now fill in the dialog content with a nice form to submit an image. In the service we created earlier, add a method to send the image to the API and plug the confirm button to that method. 
 
 > 💡 The API call for this is `POST /identify`.
 
@@ -47,16 +30,11 @@ Finally, plug the "confirm" control button to a method that will send the image 
 
 Note that, as detailed on the API's documentation, the AI is not fully ready. So to identify a species, make sure to
 name the uploaded image with the name of the species you want to discover, for example "pikachu.jpg". Lookup the list of
-Pokemonspecies on [Wikipedia](https://en.wikipedia.org/wiki/List_of_generation_I_Pok%C3%A9mon) (only generation I
-species arerecognizable).
+Pokemon species on [Wikipedia](https://en.wikipedia.org/wiki/List_of_generation_I_Pok%C3%A9mon) (only generation I
+species are recognizable).
 
-## 6. The loading
+## 3. Final touch
 
 In case of success, the API will respond with the identified species. But make sure that during the wait something is
-informing the user about the ongoing call. And once it is complete, the dialog must close automatically and the
+informing the user about the ongoing operation. And once it is complete, the dialog must close automatically and the
 identified species must be visible in the list.
-
-> 🟢 Validate the display of newly identified species with :
-> ```shell
-> npm run test -- modal-can-identify
-> ```
