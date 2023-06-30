@@ -1,1 +1,3 @@
-Write your own test to achieve at least 95% code coverage
+# Own tests
+
+Write unit tests for all your features. The code coverage for the whole app should be above 95%.
