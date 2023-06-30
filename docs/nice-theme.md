@@ -1,4 +1,4 @@
-# Nice theme
+# 🧠 Nice theme
 
 While styling the app wasn't the focus in the core objectives, show us what you can do with CSS.
 

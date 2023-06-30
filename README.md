@@ -10,6 +10,8 @@ You should keep an eye out for the following icons:
 - 💡 designates a **hint** that may provide additional help.
 - 🟢 designates a **test** command that can be run to validate your implementation.
 
+> ⚠️ As a senior developer, we ask that you complete at least 2 bonus objectives.
+
 ## The project
 
 Your goal is to make a Pokedex application to browse Pokemons species, identify new ones and display species details. A
@@ -52,12 +54,13 @@ and follow along.
 
 ## 🎯 Objectives
 
-Here are the feature we'd like you to develop. We recommend sticking to the order below for an smoother experience.
+Here are the features we'd like you to develop. We recommend sticking to the order below for a smoother experience.
 
 Focus your efforts on the functional aspects. Styling should be decent on all kind of screen (mobile, tablet, desktop)
 but we don't expect the app to be too fancy.
 
-# TODO : variante senior = use state, no consuming service directly
+The whole exercise should take you 2 to 3 hours. Let us know if you spent more than that (particularly on the bonus
+objectives) so we can evaluate your work properly.
 
 > 💡 Do not hesitate to run the provided test commands while implementing these objectives, as it will help you to make
 > sure that everything is working as intended. If a test is failing, but you are convinced that your implementation is
