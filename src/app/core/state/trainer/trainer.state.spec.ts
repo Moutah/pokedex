@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '@core/services/auth.service';
 import { TrainerService } from '@core/services/trainer.service';
-import { TrainerLogin, TrainerLogout } from '@core/state/trainer/trainer.actions';
+import { TrainerLogin, TrainerLogout, TrainerReset } from '@core/state/trainer/trainer.actions';
 import { Trainer } from '@core/state/trainer/trainer.model';
 import { TrainerState } from '@core/state/trainer/trainer.state';
 import { NgxsModule, Store } from '@ngxs/store';
@@ -85,5 +85,27 @@ describe('TrainerState', () => {
 
     expect(store.selectSnapshot(TrainerState.trainer)).toBeUndefined();
     expect(store.selectSnapshot(TrainerState.status)).toBe('disconnected');
+  });
+
+  it('should call trainer service reset and reload the page', (done) => {
+    const trainerServiceResetSpy = jest.spyOn(trainerService, 'reset').mockReturnValue(of({}));
+    const reloadSpy = jest.fn();
+
+    // Mock window.location.reload with a spy
+    const originalLocation = window.location;
+    const newLocation = Object.assign({}, originalLocation, {
+      reload: reloadSpy,
+    });
+    Object.defineProperty(window, 'location', { value: newLocation });
+
+    store.dispatch(new TrainerReset()).subscribe(() => {
+      expect(trainerServiceResetSpy).toHaveBeenCalled();
+      expect(window.location.reload).toHaveBeenCalled();
+
+      // Restore the original window.location object
+      Object.defineProperty(window, 'location', { value: originalLocation });
+
+      done();
+    });
   });
 });

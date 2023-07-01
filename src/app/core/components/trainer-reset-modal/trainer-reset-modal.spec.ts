@@ -11,9 +11,9 @@ import { of } from 'rxjs';
 
 describe('TrainerResetModalComponent', () => {
   let store: Store;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fakeMatDialogRef: MatDialogRef<TrainerResetModalComponent> = {
     close: jest.fn(),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any;
 
   beforeEach(() => {
