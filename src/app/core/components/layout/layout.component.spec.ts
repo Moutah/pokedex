@@ -1,7 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LayoutComponent } from '@core/components/layout/layout.component';
+import { TrainerResetModalComponent } from '@core/components/trainer-reset-modal/trainer-reset-modal.component';
 import { AuthService } from '@core/services/auth.service';
 import { TrainerService } from '@core/services/trainer.service';
 import { TrainerLogout, TrainerState } from '@core/state/trainer';
@@ -10,7 +12,6 @@ import { of } from 'rxjs';
 
 describe('LayoutComponent', () => {
   let store: Store;
-  let storeDispatchSpy: jest.SpyInstance;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -35,7 +36,6 @@ describe('LayoutComponent', () => {
         },
       },
     });
-    storeDispatchSpy = jest.spyOn(store, 'dispatch').mockReturnValue(of());
   });
 
   it('should mount', () => {
@@ -46,9 +46,21 @@ describe('LayoutComponent', () => {
 
   it('logs out using trainer state', () => {
     const fixture = TestBed.createComponent(LayoutComponent);
+    const storeDispatchSpy = jest.spyOn(store, 'dispatch').mockReturnValue(of());
+
     fixture.componentInstance.logout();
 
     const action = new TrainerLogout();
     expect(storeDispatchSpy).toHaveBeenCalledWith(action);
+  });
+
+  it('opens reset modal', () => {
+    const fixture = TestBed.createComponent(LayoutComponent);
+    const dialogOpenSpy = jest.spyOn(fixture.componentInstance.dialog, 'open');
+
+    fixture.componentInstance.reset();
+
+    expect(dialogOpenSpy).toHaveBeenCalled();
+    expect(dialogOpenSpy).toHaveBeenCalledWith(TrainerResetModalComponent);
   });
 });
