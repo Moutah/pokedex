@@ -59,7 +59,7 @@ describe('LoginPageComponent', () => {
     expect(component.isConnecting).toBe(true);
   });
 
-  it('should redirect to species/list upon successful login', () => {
+  it('should redirect to home upon successful login', () => {
     const routerNavigate = jest.spyOn(router, 'navigate').mockReturnValue(Promise.resolve(true));
 
     store.reset({
@@ -70,7 +70,7 @@ describe('LoginPageComponent', () => {
       },
     });
 
-    expect(routerNavigate).toHaveBeenCalledWith(['species', 'list']);
+    expect(routerNavigate).toHaveBeenCalledWith(['/']);
   });
 
   it('should prevent submitting empty token', () => {
