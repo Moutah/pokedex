@@ -9,7 +9,7 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from '@core/services/auth.service';
 import { TrainerLogout } from '@core/state/trainer';
 import { Store } from '@ngxs/store';
-import { catchError, map, of } from 'rxjs';
+import { catchError, of } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -27,13 +27,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const authReq = req.clone({ setHeaders: { Authorization: `Bearer ${authToken}` } });
 
     return next.handle(authReq).pipe(
-      map((event) => {
-        if (event instanceof HttpResponse && event.body?.data) {
-          return event.clone({ body: event.body.data });
-        }
-
-        return event;
-      }),
       catchError((error) => {
         if (error.status === 401) {
           this.store.dispatch(new TrainerLogout());
