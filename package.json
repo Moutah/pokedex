@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest --colors --maxWorkers=3",
     "test:watch": "jest --colors --maxWorkers=3 --watch",
+    "test:coverage": "jest --colors --maxWorkers=3 --coverage",
     "lint": "eslint \"**/*.{js,ts,html}\"",
     "lint:fix": "eslint \"**/*.{js,ts,html}\" --fix",
     "format": "prettier \"**/*.{ts,html,scss}\" --check",
