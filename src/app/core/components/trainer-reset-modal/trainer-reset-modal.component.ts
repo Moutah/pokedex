@@ -31,7 +31,7 @@ export class TrainerResetModalComponent {
 
   confirmReset() {
     this.isLoading = true;
-    this.store.dispatch(new TrainerReset()).pipe(
+    return this.store.dispatch(new TrainerReset()).pipe(
       tap(() => {
         this.isLoading = false;
         this.dialogRef.close();
