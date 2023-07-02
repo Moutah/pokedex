@@ -17,7 +17,7 @@ Now make the page use this method to retrieve the details of a discovered specie
 > 🟢 You can validate this by displaying the data in the template with the `json` pipe and run the
 > following test :
 > ```shell
-> npm run test -- details-page-is-plugged
+> npm run test -- -t="Details page is plugged to service"
 > ```
 
 ## 3. Stylize the page
@@ -26,5 +26,5 @@ Just like for the list page, you can now work the data to render it nicely. Choo
 
 > 🟢 Validate this feature with :
 > ```shell
-> npm run test -- details-page-works
+> npm run test -- -t="Details page displays single species"
 > ```
