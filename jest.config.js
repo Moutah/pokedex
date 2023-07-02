@@ -10,7 +10,7 @@ globalThis.ngJest = {
 module.exports = {
   preset: 'jest-preset-angular',
   globalSetup: 'jest-preset-angular/global-setup',
-  roots: ['<rootDir>'],
+  roots: ['<rootDir>/src'],
   modulePaths: ['<rootDir>'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
