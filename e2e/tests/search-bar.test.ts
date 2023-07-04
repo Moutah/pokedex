@@ -1,10 +1,20 @@
+import { environment } from '../environment';
+import { fakeLogin, hijackSpeciesResponse } from '../utils';
+
 describe('Search bar', () => {
-  beforeAll(async () => {
-    await page.goto('https://google.com');
-  });
+  beforeAll(fakeLogin);
 
   it('can filter list', async () => {
-    console.log('can filter list');
-    await expect(page.title()).resolves.toMatch('Google');
+    void page.goto(environment.appUrl);
+
+    const initialResponse = await hijackSpeciesResponse('GET', `${environment.apiUrl}/species`);
+    expect(initialResponse.data).toHaveLength(150);
+
+    await page.type('input', 'pikachu');
+    const searchResponse = await hijackSpeciesResponse(
+      'GET',
+      `${environment.apiUrl}/species?search=pikachu`
+    );
+    expect(searchResponse.data).toHaveLength(1);
   });
 });

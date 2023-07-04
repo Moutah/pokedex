@@ -1,11 +1,5 @@
 import { environment } from '../environment';
-import { fakeLogin } from '../utils';
-
-interface Species {
-  id: number;
-  name: string | '???';
-  image: string;
-}
+import { fakeLogin, hijackSpeciesResponse } from '../utils';
 
 describe('List page', () => {
   beforeAll(fakeLogin);
@@ -13,7 +7,7 @@ describe('List page', () => {
   it('is plugged to service', async () => {
     void page.goto(environment.appUrl);
 
-    const response = await hijackSpeciesResponse();
+    const response = await hijackSpeciesResponse('GET', `${environment.apiUrl}/species`);
 
     const bodyTextContent = await page.evaluate(() => document.body.textContent?.toLowerCase());
     for (const species of response.data) {
@@ -25,7 +19,7 @@ describe('List page', () => {
   it('displays species', async () => {
     void page.goto(environment.appUrl);
 
-    const response = await hijackSpeciesResponse();
+    const response = await hijackSpeciesResponse('GET', `${environment.apiUrl}/species`);
 
     for (const species of response.data) {
       const imgCount = await page.$$eval(
@@ -36,15 +30,3 @@ describe('List page', () => {
     }
   });
 });
-
-async function hijackSpeciesResponse() {
-  const rawResponse = await page.waitForResponse((res) => {
-    return res.url() === `${environment.apiUrl}/species` && res.request().method() === 'GET';
-  });
-  expect(rawResponse).toBeTruthy();
-
-  const response = await rawResponse.json();
-  expect(response).toBeTruthy();
-
-  return response as { data: Species[] };
-}
