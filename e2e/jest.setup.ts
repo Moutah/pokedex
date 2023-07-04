@@ -30,7 +30,10 @@ beforeAll(async () => {
       return;
     }
 
-    const path = request.url().replace(API_URL_REGEX, '').replace(/\//g, '_');
+    const path = request
+      .url()
+      .replace(API_URL_REGEX, '')
+      .replace(/[^a-z0-9]/g, '_');
 
     const mockFilePath = $path.resolve(`e2e/mocks/${path}.json`);
     if ($fs.existsSync(mockFilePath)) {
