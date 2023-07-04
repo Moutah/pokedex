@@ -4,5 +4,10 @@ globalThis.ngJest = {
 };
 
 module.exports = {
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+  },
+  testTimeout: 22_000,
   preset: 'jest-puppeteer',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
