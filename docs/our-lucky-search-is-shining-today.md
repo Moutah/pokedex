@@ -23,5 +23,5 @@ to retrieve the filtered list. When the filtered list is received, the list page
 
 > 🟢 Validate this feature with :
 > ```shell
-> npm run test -- -t="Search bar can filter list"
+> npm run test -- search-bar
 > ```

@@ -14,7 +14,7 @@ want to ensure we can open and close it.
 
 > 🟢 Validate the modal interaction with :
 > ```shell
-> npm run test -- -t="Discover dialog is plugged to service"
+> npm run test -- discover-dialog -t="is interactive"
 > ```
 
 ## 2. Sending the image
@@ -25,7 +25,7 @@ Now fill in the dialog content with a nice form to submit an image. In the servi
 
 > 🟢 Validate the implementation with :
 > ```shell
-> npm run test -- -t="Discover dialog can submit image"
+> npm run test -- discover-dialog
 > ```
 
 Note that, as detailed on the API's documentation, the AI is not fully ready. So to identify a species, make sure to
