@@ -1,3 +1,25 @@
+> ## Ce qu'on peut évaluer chez le candidat
+> 
+> Avec les objectifs de base
+> 
+> - Création composants, module et service
+> - Utilisation routing
+> - Utilisation de material
+> - Gestion mat-dialog
+> - Attention accordée au visuel et responsive
+> - Capacité d'intégration à une codebase existante
+> - Gestion GIT
+> 
+> Avec les objectifs bonus
+> 
+> - CSS award
+> - Écriture de tests
+> - Connaissances NGXS et du coup RXJS / Observables
+> - Lazy-loading
+> - Pagination
+
+---
+
 # Angular Application Exercise
 
 This repository contains the boilerplate for an application specifically designed to test your abilities as a **Angular
