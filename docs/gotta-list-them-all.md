@@ -22,7 +22,7 @@ With the service ready, plug it to the page so that it loads the species list up
 > 🟢 To ensure everything is well plugged together, display the data in the template with the `json` pipe and run the
 > following test :
 > ```shell
-> npm run test -- list-page -t="is plugged to service"
+> npm run test -- list-page -t="is plugged"
 > ```
 
 ## 3. Stylize the page

@@ -4,7 +4,7 @@ import { fakeLogin, hijackSpeciesResponse, SpeciesShort } from '../utils';
 describe('List page', () => {
   beforeAll(fakeLogin);
 
-  it('is plugged to service', async () => {
+  it('is plugged to the API and displays text data', async () => {
     void page.goto(environment.appUrl);
 
     const response = await hijackSpeciesResponse<SpeciesShort[]>(
@@ -19,7 +19,7 @@ describe('List page', () => {
     }
   });
 
-  it('displays species', async () => {
+  it('displays species images', async () => {
     void page.goto(environment.appUrl);
 
     const response = await hijackSpeciesResponse<SpeciesShort[]>(

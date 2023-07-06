@@ -8,7 +8,9 @@ You should keep an eye out for the following icons:
 - 🎯 designates a **primary** objective that you _MUST_ complete.
 - 🧠 designates a **bonus** objective that you _CAN_ complete.
 - 💡 designates a **hint** that may provide additional help.
-- 🟢 designates a **test** command that can be run to validate your implementation.
+- 🟢 designates a **test** command that can be run to validate your implementation. Note that for the test to run, the
+  app must be accessible on `http://localhost:4200`. Make sure you have a terminal running `npm start` in parallel of
+  your tests.
 
 > ⚠️ As a senior developer, we ask that you complete at least 2 bonus objectives.
 
@@ -20,8 +22,8 @@ fill-in the core features.
 
 ## Prerequisites
 
-The application is built with [Angular 16](https://angular.io/). You'll need [node 18](https://nodejs.org/en) to build
-and run the application localy.
+The application is built with **[Angular 16](https://angular.io/)**. You'll need [node 18](https://nodejs.org/en) to
+build and run the application locally.
 
 ## Getting started
 
@@ -75,8 +77,8 @@ objectives) so we can evaluate your work properly.
 
 > ⚠️ Make sure to complete the primary objectives before starting on these.
 
-You are not required to complete the following objectives, but you can take a look at them if you have a extra time on
-your hands. No order this time, you are free to pick those where you feel the most comfortable 😉
+Take a look at the following objectives if you have a extra time on your hands. No order this time, you are free to pick
+those where you feel the most comfortable 😉
 
 - [Nice theme](./docs/nice-theme.md)
 - [State](./docs/state.md)

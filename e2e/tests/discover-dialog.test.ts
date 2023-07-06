@@ -1,5 +1,3 @@
-import $fs from 'fs';
-
 import * as path from 'path';
 
 import { environment } from '../environment';
@@ -24,7 +22,7 @@ describe('Discover dialog', () => {
     expect(matDialog).toBeFalsy();
   });
 
-  it('can submit image', async () => {
+  it('can submit an image', async () => {
     const filePath = path.resolve('e2e/assets/pikachu.jpg');
 
     await page.goto(environment.appUrl);

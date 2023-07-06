@@ -14,7 +14,7 @@ want to ensure we can open and close it.
 
 > 🟢 Validate the modal interaction with :
 > ```shell
-> npm run test -- discover-dialog -t="is interactive"
+> npm run test -- discover-dialog -t="can be opened"
 > ```
 
 ## 2. Sending the image

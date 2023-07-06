@@ -17,7 +17,7 @@ Now make the page use this method to retrieve the details of a discovered specie
 > 🟢 You can validate this by displaying the data in the template with the `json` pipe and run the
 > following test :
 > ```shell
-> npm run test -- details-page -t="is plugged to service"
+> npm run test -- details-page -t="is plugged"
 > ```
 
 ## 3. Stylize the page

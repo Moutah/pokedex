@@ -4,7 +4,7 @@ import { fakeLogin, hijackSpeciesResponse, Species } from '../utils';
 describe('Details page', () => {
   beforeAll(fakeLogin);
 
-  it('is plugged to service', async () => {
+  it('is plugged to the API and displays text data', async () => {
     void navigateToPikachePage();
 
     const response = await hijackSpeciesResponse<Species>(
@@ -26,7 +26,7 @@ describe('Details page', () => {
     }
   });
 
-  it('displays single species', async () => {
+  it('displays species image', async () => {
     void navigateToPikachePage();
 
     const response = await hijackSpeciesResponse<Species>(
