@@ -10,10 +10,10 @@
     "test:unit": "jest --colors --maxWorkers=3",
     "test:watch": "jest --colors --maxWorkers=3 --watch",
     "test:coverage": "jest --colors --maxWorkers=3 --coverage",
-    "lint": "eslint \"**/*.{js,ts,html}\"",
-    "lint:fix": "eslint \"**/*.{js,ts,html}\" --fix",
-    "format": "prettier \"**/*.{ts,html,scss}\" --check",
-    "format:fix": "prettier \"**/*.{ts,html,scss}\" --write"
+    "lint": "eslint \"src/**/*.{js,ts,html}\"",
+    "lint:fix": "eslint \"src/**/*.{js,ts,html}\" --fix",
+    "format": "prettier \"src/**/*.{ts,html,scss}\" --check",
+    "format:fix": "prettier \"src/**/*.{ts,html,scss}\" --write"
   },
   "engines": {
     "node": "^16.14.0 || ^18.10.0  || >= 20.3.0"
