@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { MatDialog } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LayoutComponent } from '@core/components/layout/layout.component';
 import { TrainerResetModalComponent } from '@core/components/trainer-reset-modal/trainer-reset-modal.component';
