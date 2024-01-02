@@ -12,8 +12,6 @@ You should keep an eye out for the following icons:
   app must be accessible on `http://localhost:4200`. Make sure you have a terminal running `npm start` in parallel of
   your tests.
 
-> ⚠️ As a senior developer, we ask that you complete at least 2 bonus objectives.
-
 ## The project
 
 Your goal is to make a Pokedex application to browse Pokemons species, identify new ones and display species details. A
